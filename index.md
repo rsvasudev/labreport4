@@ -14,6 +14,23 @@
 
 ```
 
+### An input that doesn’t induce a failure, as a JUnit test and any associated code 
+
+```ruby
+@Test 
+	public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+	}
+```
+
+### The symptom, as the output of running the tests 
+
+
+
+
+
 
 
 
