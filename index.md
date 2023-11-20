@@ -115,7 +115,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r "Portland" ./technical
 ```
 
 Description:
-grep -r "Portland" ./technical. This command searches for all the files and the lines in these files, which the provided string "Portland" is in. -r enables a search for this string not only in the technical directory but also its subdirectories.
+grep -r "Portland" ./technical. This command searches for all the files and the lines in these files, which the provided string "Portland" is in. -r enables a search for this string not only in the ./technical directory but also its subdirectories.
 
 ### grep -r "example string" <path> with file as argument 
 ```ruby
@@ -129,6 +129,164 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r "Portland" ./technical/gover
 
 Description:
 grep -r "Portland" ./technical/government/About_LSC/State_Planning_Report.txt. This command searches for all the lines that have the provided string in the mentioned file. The -r here doesn't do much as there are no subdirectories or directories as the path provided is to an actual file.
+
+### grep -c "example string" <path> with directory as argument 
+
+```ruby
+grep -c "Portland" ./technical
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -c "Portland" ./technical
+grep: ./technical: Is a directory
+```
+Description:
+The command returns an error as this command-line option -c only takes filepaths as arguments. It then returns the number of lines with the given string. However, you can recursively search using -r from the previous command-line option and use the diretcory as an argument as shopwn below. 
+
+```ruby
+grep -r -c "Portland" ./technical/911report
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -c "Portland" ./technical/911report
+./technical/911report/chapter-13.4.txt:0
+./technical/911report/chapter-13.5.txt:1
+./technical/911report/chapter-13.1.txt:0
+./technical/911report/chapter-13.2.txt:4
+./technical/911report/chapter-13.3.txt:0
+./technical/911report/chapter-3.txt:0
+./technical/911report/chapter-2.txt:0
+./technical/911report/chapter-1.txt:3
+./technical/911report/chapter-5.txt:0
+./technical/911report/chapter-6.txt:0
+./technical/911report/chapter-7.txt:1
+./technical/911report/chapter-9.txt:0
+./technical/911report/chapter-8.txt:0
+./technical/911report/preface.txt:0
+./technical/911report/chapter-12.txt:0
+./technical/911report/chapter-10.txt:0
+./technical/911report/chapter-11.txt:0
+```
+
+Description:
+-r enables the command to search recursively(ie in all of ./technical/911report's subdirectories and within the directory itself).-c then enables the command to provide a count of the number of times "Portland" is used in each of the files.
+
+Note: I changed the directory as there were too many files listed if ./technical was used as the directory.
+
+### grep -c "example string" <path> with file as argument 
+
+```ruby
+grep -r -c "Portland" ./technical/911report/chapter-13.5.txt
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -c "Portland" ./technical/911report/chapter-13.5.txt
+./technical/911report/chapter-13.5.txt:1
+```
+
+Description:
+Here with the file as the argument. -c counts the number of lines with the "Portland" string in the filepath provided. The . in the filepath stands for the working diretory.
+
+### grep -w "example string" <path> with file as argument 
+```ruby
+grep -w  "Portland" ./technical/911report/chapter-13.5.txt
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -w  "Portland" ./technical/911report/chapter-13.5.txt
+                the Portland flight. Although he may have believed that security was more relaxed at
+```
+
+Description:
+-w unlike -r allows for only exact matches to word to be given. For example, if the string in the command is "specific", it will only return lines that contain the word "specific". -r would return lines with words like "specifically" or "specifics". The argument has to be a file. As you can see, it returns all the lines in the text file with the word "Portland". 
+
+### grep -w "example string" <path> with directory as argument
+```ruby
+grep -w  "Portland" ./technical/911report
+```
+
+``` ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -w  "Portland" ./technical/911report
+grep: ./technical/911report: Is a directory
+```
+
+Like with -c we need to search recursively(-r) in order to be able to use a diretcory as an argument. 
+```ruby
+
+```
+grep -r -w "Portland" ./technical/911report
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -w "Portland" ./technical/911report
+./technical/911report/chapter-13.5.txt:                the Portland flight. Although he may have believed that security was more relaxed at
+./technical/911report/chapter-13.2.txt:                of why Atta and Omari drove to Portland, Maine, from Boston on the morning of
+./technical/911report/chapter-13.2.txt:                However, Atta reacted negatively when informed in Portland that he would have to
+./technical/911report/chapter-13.2.txt:                reason, the Portland Jetport was the nearest airport to Boston with a 9/11 flight
+./technical/911report/chapter-13.2.txt:                interview (Nov. 6, 2003); Portland International Jetport site visit (Aug. 18, 2003).
+./technical/911report/chapter-1.txt:    For those heading to an airport, weather conditions could not have been better for a safe and pleasant journey. Among the travelers were Mohamed Atta and Abdul Aziz al Omari, who arrived at the airport in Portland, Maine.
+./technical/911report/chapter-1.txt:    Boston: American 11 and United 175. Atta and Omari boarded a 6:00 A.M. flight from Portland to Boston's Logan International Airport.
+./technical/911report/chapter-1.txt:    While Atta had been selected by CAPPS in Portland, three members of his hijacking team-Suqami, Wail al Shehri, and Waleed al Shehri-were selected in Boston. Their selection affected only the handling of their checked bags, not their screening at the checkpoint. All five men cleared the checkpoint and made their way to the gate for American 11. Atta, Omari, and Suqami took their seats in business class (seats 8D, 8G, and 10B, respectively). The Shehri brothers had adjacent seats in row 2 (Wail in 2A, Waleed in 2B), in the firstclass cabin. They boarded American 11 between 7:31 and 7:40. The aircraft pushed back from the gate at 7:40.
+./technical/911report/chapter-7.txt:                another hotel, and the two drove to Portland, Maine, for reasons that remain
+```
+
+Description:
+
+As you can see, similar to -r, it returns the filepaths and the respective lines in the file where "Portland" is used. Note that it will only return lines where the word "Portland" is contained not lines where the string "Portland" is. For example, it wouldnt return a line where the word "Portland's" is used. This is how it differs to -r by itself. Again, -r enables for a search to be done for everything in the ./technical/911report directory and all its subdirectories. 
+
+### grep -n "example string" <path> with file as argument
+```ruby
+grep -n "Portland" ./technical/911report/chapter-13.5.txt
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -n "Portland" ./technical/911report/chapter-13.5.txt
+577:                the Portland flight. Although he may have believed that security was more relaxed at
+```
+
+Description:
+-n enables a simialr type of search to the other commands. However, it returns the line number as well as the line with the string "Portland". Note, unlike -w, it just looks for the string "Portland" not the word so a line with "Portland's" would be shown. The filepath is provided as the argument and this is the file that is searched. This is useful because it allows for us to see if there's areas where a certain string is used more due to the line number being provided. Thus, we can see if "Portland" is used 3 times in 3 lines. The contents of the line make the command even mroe useful by providing context. 
+
+### grep -n "example string" <path> with directory as argument
+
+```ruby
+grep -n "Portland" ./technical/911report
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -n "Portland" ./technical/911report                 
+grep: ./technical/911report: Is a directory
+```
+
+Again, to pass a diretcory as an argument, we need to search recursively.
+
+```ruby
+grep -r -n "Portland" ./technical/911report
+```
+
+```ruby
+rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -n "Portland" ./technical/911report              
+./technical/911report/chapter-13.5.txt:577:                the Portland flight. Although he may have believed that security was more relaxed at
+./technical/911report/chapter-13.2.txt:62:                of why Atta and Omari drove to Portland, Maine, from Boston on the morning of
+./technical/911report/chapter-13.2.txt:64:                However, Atta reacted negatively when informed in Portland that he would have to
+./technical/911report/chapter-13.2.txt:66:                reason, the Portland Jetport was the nearest airport to Boston with a 9/11 flight
+./technical/911report/chapter-13.2.txt:69:                interview (Nov. 6, 2003); Portland International Jetport site visit (Aug. 18, 2003).
+./technical/911report/chapter-1.txt:8:    For those heading to an airport, weather conditions could not have been better for a safe and pleasant journey. Among the travelers were Mohamed Atta and Abdul Aziz al Omari, who arrived at the airport in Portland, Maine.
+./technical/911report/chapter-1.txt:14:    Boston: American 11 and United 175. Atta and Omari boarded a 6:00 A.M. flight from Portland to Boston's Logan International Airport.
+./technical/911report/chapter-1.txt:34:    While Atta had been selected by CAPPS in Portland, three members of his hijacking team-Suqami, Wail al Shehri, and Waleed al Shehri-were selected in Boston. Their selection affected only the handling of their checked bags, not their screening at the checkpoint. All five men cleared the checkpoint and made their way to the gate for American 11. Atta, Omari, and Suqami took their seats in business class (seats 8D, 8G, and 10B, respectively). The Shehri brothers had adjacent seats in row 2 (Wail in 2A, Waleed in 2B), in the firstclass cabin. They boarded American 11 between 7:31 and 7:40. The aircraft pushed back from the gate at 7:40.
+./technical/911report/chapter-7.txt:1565:                another hotel, and the two drove to Portland, Maine, for reasons that remain
+```
+
+Description:
+Search recursively so directory can be entered as an argument. Recurisve search means that returns line number and correesponding line with "Portland" for each file in working directory and all its subdirectories. -n enables line number and corresponding line to be returned. Then, directory is specified so command knows where to search. This is useful again as a recurisve search allows for a thorougha nd wide search without having to type the same thing multiple times for each file. -n allows for patterns in files to be seen easily and whhich part of each file, the desired string is being used amd if it's being sued in certain areas more. 
+
+
+
+
+
+
+
+
+
+
 
 
 
