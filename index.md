@@ -70,6 +70,9 @@ Therefore, the bug is fixed.
 
 ![Image](Fixed.png)
 
+## Part 2
+
+
 
 
 
