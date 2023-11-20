@@ -44,7 +44,6 @@ After:
 ```ruby
   static void reverseInPlace(int[] arr){
   for (int i = 0; i < arr.length / 2; i++) {
-        
         int temp = arr[i];
         arr[i] = arr[arr.length - i - 1];
         arr[arr.length - i - 1] = temp;
@@ -284,6 +283,74 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -n "Portland" ./technical/91
 
 Description:
 Search recursively so directory can be entered as an argument. Recurisve search means that returns line number and correesponding line with "Portland" for each file in working directory and all its subdirectories. -n enables line number and corresponding line to be returned. Then, directory is specified so command knows where to search. This is useful again as a recurisve search allows for a thorougha nd wide search without having to type the same thing multiple times for each file. -n allows for patterns in files to be seen easily and whhich part of each file, the desired string is being used amd if it's being sued in certain areas more. 
+
+
+## Citing chatGPT sources
+
+### Prompt 1
+tell me how to sue the following commands grep -r grep -w grep -c and grep -n work in detail 
+
+ChatGPT
+Certainly! Let's go into detail on how each of the grep commands work:
+
+1. grep -r (or grep --recursive)
+Purpose:
+Searches for a specified pattern recursively in a directory and its subdirectories.
+Syntax:
+bash
+Copy code
+grep -r "pattern" /path/to/directory
+Example:
+bash
+Copy code
+grep -r "keyword" /path/to/source_code_directory
+This command will search for the pattern "keyword" in all files within the specified directory (/path/to/source_code_directory) and its subdirectories.
+2. grep -w (or grep --word-regexp)
+Purpose:
+Searches for whole words, ensuring that the pattern is matched only if it forms a complete word.
+Syntax:
+bash
+Copy code
+grep -w "word" file.txt
+Example:
+bash
+Copy code
+grep -w "apple" fruits.txt
+This command searches for the whole word "apple" in the file fruits.txt, avoiding matches with words like "pineapple" or "applesauce."
+3. grep -c (or grep --count)
+Purpose:
+Counts the number of lines that match the specified pattern.
+Syntax:
+bash
+Copy code
+grep -c "pattern" file.txt
+Example:
+bash
+Copy code
+grep -c "error" logfile.txt
+This command counts and outputs the number of lines in logfile.txt that contain the pattern "error."
+4. grep -n (or grep --line-number)
+Purpose:
+Displays the line numbers along with the matching lines.
+Syntax:
+bash
+Copy code
+grep -n "pattern" file.txt
+Example:
+bash
+Copy code
+grep -n "warning" source_code.c
+This command searches for the pattern "warning" in source_code.c and displays the line numbers of the matching lines.
+Additional Tips:
+These grep options can be combined based on your requirements. For example, you might use grep -r -n to search for a pattern recursively and display line numbers.
+Regular expressions can be used with these commands to create more complex search patterns.
+These examples cover some common use cases, but grep is a powerful tool with many more options. You can explore additional functionalities by referring to the manual (man grep) or relevant documentation for more advanced usage.
+
+
+This prompt helped me unerstand these prompts after finding them in the manual and hwo to implement them in my lab report.
+
+
+
 
 
 
