@@ -75,6 +75,12 @@ Therefore, the bug is fixed.
 
 Chosen command: grep 
 
+### 4 command line options for grep
+grep -r
+grep -c 
+grep -w 
+grep -n 
+
 I used the man grep command and ChatGPT to find and understadn these different commands.
 
 ### grep -r "example string" <path> with directory as argument 
