@@ -116,7 +116,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r "Portland" ./technical
 ```
 
 Description:
-grep -r "Portland" ./technical. This command searches for all the files and the lines in these files, which the provided string "Portland" is in. -r enables a search for this string not only in the ./technical directory but also its subdirectories.
+grep -r "Portland" ./technical. This command searches for all the files and the lines in these files, which the provided string "Portland" is in. -r enables a search for this string not only in the ./technical directory but also its subdirectories. This is useful because it allows for a thorougha nd wide search to be done in one command. Thus, files containing a specific word can be found easily and quickly, meaning there is less work for the user.
 
 ### grep -r "example string" <path> with file as argument 
 ```ruby
@@ -129,7 +129,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r "Portland" ./technical/gover
 ```
 
 Description:
-grep -r "Portland" ./technical/government/About_LSC/State_Planning_Report.txt. This command searches for all the lines that have the provided string in the mentioned file. The -r here doesn't do much as there are no subdirectories or directories as the path provided is to an actual file.
+grep -r "Portland" ./technical/government/About_LSC/State_Planning_Report.txt. This command searches for all the lines that have the provided string in the mentioned file. The -r here doesn't do much as there are no subdirectories or directories as the path provided is to an actual file. This is useful because it allows for us to see all the lines in the file with the word but also observe patterns within the file andf how freuqently the string is used. 
 
 ### grep -c "example string" <path> with directory as argument 
 
@@ -141,8 +141,8 @@ grep -c "Portland" ./technical
 rohanvasudev@Rohans-MacBook-Air docsearch % grep -c "Portland" ./technical
 grep: ./technical: Is a directory
 ```
-Description:
-The command returns an error as this command-line option -c only takes filepaths as arguments. It then returns the number of lines with the given string. However, you can recursively search using -r from the previous command-line option and use the diretcory as an argument as shopwn below. 
+
+The command returns an error as this command-line option -c only takes filepaths as arguments. It then returns the number of lines with the given string. However, you can recursively search using -r from the previous command-line option and use the diretcory as an argument as shopwn below. This isnt useful. The command is made useful below. 
 
 ```ruby
 grep -r -c "Portland" ./technical/911report
@@ -170,7 +170,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -c "Portland" ./technical/91
 ```
 
 Description:
--r enables the command to search recursively(ie in all of ./technical/911report's subdirectories and within the directory itself).-c then enables the command to provide a count of the number of times "Portland" is used in each of the files.
+-r enables the command to search recursively(ie in all of ./technical/911report's subdirectories and within the directory itself).-c then enables the command to provide a count of the number of times "Portland" is used in each of the files. The directory then tells the command where to search. This is useful because we are able to search quickly and see files with more of the same string very easily due to the way the data is presented to us. This can be helpful in spotting patterns. 
 
 Note: I changed the directory as there were too many files listed if ./technical was used as the directory.
 
@@ -186,7 +186,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -c "Portland" ./technical/91
 ```
 
 Description:
-Here with the file as the argument. -c counts the number of lines with the "Portland" string in the filepath provided. The . in the filepath stands for the working diretory.
+Here with the file as the argument. -c counts the number of lines with the "Portland" string in the filepath provided. The . in the filepath stands for the working diretory. This is useful because we are able to concisely see hwo many times a string is used in the file without having to indivdually count. Furthermore, you can comapre this with other files and perhaps get a slight gauge of what the text file's contents are about by finding this frequency.
 
 ### grep -w "example string" <path> with file as argument 
 ```ruby
@@ -199,7 +199,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -w  "Portland" ./technical/911r
 ```
 
 Description:
--w unlike -r allows for only exact matches to word to be given. For example, if the string in the command is "specific", it will only return lines that contain the word "specific". -r would return lines with words like "specifically" or "specifics". The argument has to be a file. As you can see, it returns all the lines in the text file with the word "Portland". 
+-w unlike -r allows for only exact matches to word to be given. For example, if the string in the command is "specific", it will only return lines that contain the word "specific". -r would return lines with words like "specifically" or "specifics". The argument has to be a file. As you can see, it returns all the lines in the text file with the word "Portland". This is useful because it allows for us to search the contents of the text file with ease but also because we are able to see when the exact word(s) is used rather than just the string itself. This can help get a more in depth search and prevent thre output providing us with lines that don;t have the word we were looking for. 
 
 ### grep -w "example string" <path> with directory as argument
 ```ruby
@@ -231,7 +231,7 @@ rohanvasudev@Rohans-MacBook-Air docsearch % grep -r -w "Portland" ./technical/91
 
 Description:
 
-As you can see, similar to -r, it returns the filepaths and the respective lines in the file where "Portland" is used. Note that it will only return lines where the word "Portland" is contained not lines where the string "Portland" is. For example, it wouldnt return a line where the word "Portland's" is used. This is how it differs to -r by itself. Again, -r enables for a search to be done for everything in the ./technical/911report directory and all its subdirectories. 
+As you can see, similar to -r, it returns the filepaths and the respective lines in the file where "Portland" is used. Note that it will only return lines where the word "Portland" is contained not lines where the string "Portland" is. For example, it wouldnt return a line where the word "Portland's" is used. This is how it differs to -r by itself. Again, -r enables for a search to be done for everything in the ./technical/911report directory and all its subdirectories. Agian the nature of the recurisve search is very useful due to its ease and speed. Additonally, the search is without phrase's like "Portland's" in its output or "Portlander" that help for a mroe specific and in depths earch when required. 
 
 ### grep -n "example string" <path> with file as argument
 ```ruby
